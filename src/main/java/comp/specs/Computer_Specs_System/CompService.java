@@ -2,6 +2,8 @@ package comp.specs.Computer_Specs_System;
 
 //import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.stereotype.Service;
+import jakarta.persistence.Entity;
+
 
 import java.util.List;
 import java.util.ArrayList;

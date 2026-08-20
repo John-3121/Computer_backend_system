@@ -1,6 +1,8 @@
 package comp.specs.Computer_Specs_System;
 
+@Entity
 public class Computer {
+    @Id
     private int Id;
     private String processor; 
     private int ram;

@@ -1,5 +1,9 @@
 package comp.specs.Computer_Specs_System;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+
 @Entity
 public class Computer {
     @Id
@@ -9,6 +13,7 @@ public class Computer {
     private int storage;
     private String graphicsCard;
     
+    public Computer() {}
     
     public Computer(int Id, String processor, int ram, int storage, String graphicsCard) {
         this.Id = Id;

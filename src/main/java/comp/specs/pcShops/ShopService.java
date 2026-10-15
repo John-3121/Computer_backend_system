@@ -1,4 +1,4 @@
-package comp.specs.Computer_Specs_System;
+package comp.specs.Computer_pcShops;
 
 //import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.beans.factory.annotation.Autowired;

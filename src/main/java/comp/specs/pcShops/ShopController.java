@@ -1,4 +1,4 @@
-package comp.specs.Computer_Specs_System;
+package comp.specs.pcShops;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/Computers")
+@RequestMapping("/pcshop")
 public class ShopController {
     
     @Autowired

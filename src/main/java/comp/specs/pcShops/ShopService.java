@@ -21,9 +21,9 @@ public class ShopService {
           new Computer(2,"Intel i7",32,1024,"NVIDIA RTX 3060"),
           new Computer(3,"AMD Ryzen 5",16,512,"AMD Radeon RX 580")));
    */
-    public List<Computer> getAllComputer(){
+    public List<PcShop> getAllShop(){
         
-        List<Computer> shops = new ArrayList<>(); 
+        List<PcShop> shops = new ArrayList<>(); 
         shopRepository.findAll().forEach(shops::add);
         return shops;
     }

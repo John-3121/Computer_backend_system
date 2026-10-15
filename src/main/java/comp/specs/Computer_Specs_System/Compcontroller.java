@@ -11,14 +11,14 @@ import java.util.List;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/Computers")
+@RequestMapping("/pcshops")
 public class Compcontroller {
     
     @Autowired
     private CompService compService;
     
     @GetMapping
-    public List<Computer> rtnAllComputer(){
+    public List<Computer> getAllComputer(){
         return compService.getAllComputer();
     }
     

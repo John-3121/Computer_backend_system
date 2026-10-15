@@ -11,14 +11,14 @@ import java.util.List;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/pcshop")
+@RequestMapping("/pcshops")
 public class ShopController {
     
     @Autowired
     private ShopService shopService;
     
     @GetMapping
-    public List<Computer> getShops(){
+    public List<PcShop> getAllShop(){
         return shopService.getAllShop();
     }
     

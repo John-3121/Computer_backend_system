@@ -15,31 +15,31 @@ import java.util.ArrayList;
 public class ShopController {
     
     @Autowired
-    private CompService compService;
+    private ShopService shopService;
     
     @GetMapping
-    public List<Computer> rtnAllComputer(){
-        return compService.getAllComputer();
+    public List<Computer> getShops(){
+        return shopService.getAllShop();
     }
     
     @GetMapping("/{id}")
-    public Computer getComputer(@PathVariable int id){
-        return compService.getComputer(id);
+    public PcShop getShop(@PathVariable int id){
+        return shopService.getShop(id);
     }
     
     @PostMapping
-    public void createComputer(@RequestBody Computer computer){
-        compService.addComputer(computer);
+    public void createShop(@RequestBody PcShop shop){
+        shopService.addShop(shop);
     }
     
     @PutMapping("/{id}")
-    public void updateComputer(@PathVariable int id,@RequestBody Computer updatedComputer){
-        compService.updateComputer(id,updatedComputer);
+    public void updateShop(@PathVariable int id,@RequestBody PcShop updatedShop){
+        shopService.updateShop(id,updatedShop);
         
     }
     
     @DeleteMapping("/{id}")
-    public void deleteComputer(@PathVariable int id){
-        compService.deleteComputer(id);
+    public void deleteShop(@PathVariable int id){
+        shopService.deleteShop(id);
     }
 }

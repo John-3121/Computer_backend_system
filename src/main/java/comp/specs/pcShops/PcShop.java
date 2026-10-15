@@ -8,7 +8,6 @@ public class PcShop {
 
     @Id
     private int Id;
-
     private String shopName;
     private double ratings;
     private String location;

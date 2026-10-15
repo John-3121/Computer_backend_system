@@ -1,4 +1,4 @@
-package comp.specs.Computer_pcShops;
+package comp.specs.pcShops;
 
 //import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.Arrays;
 public class ShopService {
 
     @Autowired
-    private CompRepository compRepository;
+    private ShopRepository shopRepository;
     
    /* private  List<Computer> computers = new ArrayList<>(Arrays.asList(
           new Computer(1,"Intel i5",16,512,"NVIDIA GTX 1650"),
@@ -23,12 +23,12 @@ public class ShopService {
    */
     public List<Computer> getAllComputer(){
         
-        List<Computer> computers = new ArrayList<>(); 
-        compRepository.findAll().forEach(computers::add);
-        return computers;
+        List<Computer> shops = new ArrayList<>(); 
+        shopRepository.findAll().forEach(shops::add);
+        return shops;
     }
     
-    public Computer getComputer(int id){
+    public PcShop getShop(int id){
         //u can also use this one below;
         // Computer result = computers.stream().filter(computer -> computer.getId() == id).findFirst().orElse(null);
        /* for(Computer computer:computers){
@@ -38,17 +38,17 @@ public class ShopService {
         }
         return null;
         */
-        return compRepository.findById(id).orElse(null);
+        return shopRepository.findById(id).orElse(null);
         
     }
     
     
-    public void addComputer(Computer computer){
-        compRepository.save(computer);
+    public void addShop(PcShop shops){
+        shopRepository.save(shops);
     }
     
     
-    public void updateComputer(int id, Computer updatedComputer){
+    public void updateShop(int id, PcShop updatedShop){
       /*  for(Computer computer:computers){
             if(id == computer.getId()){
                 computer.setProcessor(updatedComputer.getProcessor());
@@ -57,12 +57,12 @@ public class ShopService {
                 computer.setGraphicsCard(updatedComputer.getGraphicsCard());
             }
         }*/
-        compRepository.save(updatedComputer);
+        shopRepository.save(updatedShop);
         
     }
     
-    public void deleteComputer(int id){
+    public void deleteShop(int id){
           //  computers.removeIf(computer -> computer.getId() == id);
-        compRepository.deleteById(id);
+        shopRepository.deleteById(id);
     }
 }

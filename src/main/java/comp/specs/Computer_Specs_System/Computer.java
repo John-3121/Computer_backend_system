@@ -1,79 +1,53 @@
 package comp.specs.Computer_Specs_System;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Computer {
     @Id
-    private int Id;
-    private String processor; 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String processor;
     private int ram;
     private int storage;
     private String graphicsCard;
-    
+
+    // Each computer belongs to one shop (creates a shop_id column)
+    @ManyToOne
+    @JoinColumn(name = "shop_id")
+    @JsonIgnore
+    private PcShop shop;
+
     public Computer() {}
-    
-    public Computer(int Id, String processor, int ram, int storage, String graphicsCard) {
-        this.Id = Id;
+
+    public Computer(String processor, int ram, int storage, String graphicsCard) {
         this.processor = processor;
         this.ram = ram;
         this.storage = storage;
         this.graphicsCard = graphicsCard;
     }
 
-    // Getters and Setters
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
 
-    public int getId() {
-        return Id;
-    }
+    public String getProcessor() { return processor; }
+    public void setProcessor(String processor) { this.processor = processor; }
 
-    public void setId(int Id) {
-        this.Id = Id;
-    }
+    public int getRam() { return ram; }
+    public void setRam(int ram) { this.ram = ram; }
 
-    public String getProcessor() {
-        return processor;
-    }
+    public int getStorage() { return storage; }
+    public void setStorage(int storage) { this.storage = storage; }
 
-    public void setProcessor(String processor) {
-        this.processor = processor;
-    }
+    public String getGraphicsCard() { return graphicsCard; }
+    public void setGraphicsCard(String graphicsCard) { this.graphicsCard = graphicsCard; }
 
-    public int getRam() {
-        return ram;
-    }
-
-    public void setRam(int ram) {
-        this.ram = ram;
-    }
-
-    public int getStorage() {
-        return storage;
-    }
-
-    public void setStorage(int storage) {
-        this.storage = storage;
-    }
-
-    public String getGraphicsCard() {
-        return graphicsCard;
-    }
-
-    public void setGraphicsCard(String graphicsCard) {
-        this.graphicsCard = graphicsCard;
-    }
-
-  @Override
-public String toString() {
-    return "Computer {" +
-            "Id=" + Id +
-            ", processor='" + processor + '\'' +
-            ", ram=" + ram +
-            ", storage=" + storage +
-            ", graphicsCard='" + graphicsCard + '\'' +
-            '}';
-}
-    
+    public PcShop getShop() { return shop; }
+    public void setShop(PcShop shop) { this.shop = shop; }
 }

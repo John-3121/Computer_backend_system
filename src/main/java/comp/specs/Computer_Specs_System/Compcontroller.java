@@ -1,45 +1,43 @@
 package comp.specs.Computer_Specs_System;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/pcshops")
+@RequestMapping("/pcshops/{shopId}/computers")
 public class Compcontroller {
-    
+
     @Autowired
     private CompService compService;
-    
+
     @GetMapping
-    public List<Computer> getAllComputer(){
-        return compService.getAllComputer();
+    public List<Computer> getAllComputer(@PathVariable int shopId) {
+        return compService.getAllComputer(shopId);
     }
-    
+
     @GetMapping("/{id}")
-    public Computer getComputer(@PathVariable int id){
-        return compService.getComputer(id);
+    public Computer getComputer(@PathVariable int shopId, @PathVariable int id) {
+        return compService.getComputer(shopId, id);
     }
-    
+
     @PostMapping
-    public void createComputer(@RequestBody Computer computer){
-        compService.addComputer(computer);
+    @ResponseStatus(HttpStatus.CREATED)
+    public Computer createComputer(@PathVariable int shopId, @RequestBody Computer computer) {
+        return compService.addComputer(shopId, computer);
     }
-    
+
     @PutMapping("/{id}")
-    public void updateComputer(@PathVariable int id,@RequestBody Computer updatedComputer){
-        compService.updateComputer(id,updatedComputer);
-        
+    public Computer updateComputer(@PathVariable int shopId, @PathVariable int id,
+                                   @RequestBody Computer updatedComputer) {
+        return compService.updateComputer(shopId, id, updatedComputer);
     }
-    
+
     @DeleteMapping("/{id}")
-    public void deleteComputer(@PathVariable int id){
-        compService.deleteComputer(id);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteComputer(@PathVariable int shopId, @PathVariable int id) {
+        compService.deleteComputer(shopId, id);
     }
 }
